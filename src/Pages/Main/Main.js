@@ -1,5 +1,14 @@
 import React from "react";
 
+import Timer from "Components/Timer";
+
 export default function Main() {
-  return <div>hello, world</div>;
+  return (
+    <>
+      <Timer kind="KOREA"></Timer>
+      <br></br>
+      <br></br>
+      <Timer kind="USA"></Timer>
+    </>
+  );
 }
