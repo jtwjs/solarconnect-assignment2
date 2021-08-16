@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-export default function StartButton({className, clickHandler}) {
+export default function Button({className, clickHandler, children}) {
 	return (
 		<Wrapper
 			type="button"
 			className={className}
 			onClick={clickHandler}
 		>
-			Sorting
+			{children}
 		</Wrapper>
 	);
 };
@@ -19,7 +19,7 @@ const Wrapper = styled.button`
 	align-items: center;
 	height: 55px;
   border-radius: 4px;
-  padding: 0 20px;
+  padding: 0 80px;
 	font-size: 18px;
   font-weight: 700;
 	line-height: 1.5;
@@ -30,5 +30,15 @@ const Wrapper = styled.button`
 	&:hover {
     background-color: ${({theme}) => theme.color.blueGreyDark};
 	}
+
+  @media screen and ${({theme}) => theme.device.tablet} {
+    height: 48px;
+    padding: 0 60px;
+  }
+
+  @media screen and ${({theme}) => theme.device.mobile} {
+    height: 40px;
+    padding: 0 20px;
+  }
 `
 

@@ -16,6 +16,18 @@ const Wrapper = styled.article`
 	&:not(:last-child) {
 		margin-bottom: 50px;
 	}
+
+  @media screen and ${({theme}) => theme.device.tablet} {
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }	
+  }
+
+  @media screen and ${({theme}) => theme.device.mobile} {
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
 `;
 
 const StyledTitle = styled.h2`
