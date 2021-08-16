@@ -1,11 +1,9 @@
 const breakpoint = {
-  desktop: 1440,
-  tablet: 960,
+  tablet: 1200,
   mobile: 768,
 };
 
 const device = {
-  desktop: `(min-width: ${breakpoint.desktop}px)`,
   tablet: `(max-width: ${breakpoint.tablet}px)`,
   mobile: `(max-width: ${breakpoint.mobile}px)`,
 };
@@ -26,9 +24,20 @@ const color = {
   lightGreyC: "#f1f1f3",
   pink: "#dd346c",
   lightGreen: "#aac14f",
+  // solar
+  border: '#E0E2E7',
+  background: "#F7F8FA",
 };
+
+const layout = {
+  lg_max_container: "1140px",
+  md_max_container: "960px",
+  md_margin: "30px",
+  sm_margin: "10px",
+}
 
 export const theme = {
   device,
   color,
+  layout
 };
