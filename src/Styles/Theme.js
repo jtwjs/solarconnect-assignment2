@@ -9,21 +9,13 @@ const device = {
 };
 
 const color = {
-  primary: "#87bf44",
-  primaryAlpha: "rgba(165, 210, 95, 0.1)",
-  secondary: "#0085fd",
-  secondaryAlpha: "rgba(0, 133, 253, 0.1)",
   white: "#fff",
   black: "#0b0b0b",
   blueGrey: "#65737e",
-  blueGreyAlpha: "rgba(101, 115, 126, 0.1)",
+  blueGreyDark: "#3d464d",
   grey: "#aeb0b4",
   deepGrey: "#4a4a4a",
-  lightGreyA: "#ccc",
-  lightGreyB: "#e5e5e5",
-  lightGreyC: "#f1f1f3",
-  pink: "#dd346c",
-  lightGreen: "#aac14f",
+  lightGrey: "#ccc",
   // solar
   border: '#E0E2E7',
   background: "#F7F8FA",

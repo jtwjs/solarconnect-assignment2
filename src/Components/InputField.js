@@ -19,15 +19,16 @@ export default function InputField({inputText, handleInputText}) {
 const Input = styled.input`
   display: block;
   width: 100%;
-  height: 40px;
+  height: 60px;
   border: 1px solid ${({theme}) => theme.color.border};
   border-radius: 4px;
   padding: 0 16px;
+	font-size: 25px;
   background-color: ${({theme}) => theme.color.white};
   transition: background-color 0.2s ease-in-out;
 
   &::placeholder {
-    color: ${({theme}) => theme.color.lightGreyA};
+    color: ${({theme}) => theme.color.lightGrey};
   }
 
   &:hover,

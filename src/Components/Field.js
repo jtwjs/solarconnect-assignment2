@@ -12,11 +12,15 @@ export default function Field({title, children}) {
 
 const Wrapper = styled.article`
 	width: 80%;
+	
+	&:not(:last-child) {
+		margin-bottom: 50px;
+	}
 `;
 
 const StyledTitle = styled.h2`
 	display: block;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	font-size: 20px;
 	font-weight: 700;
 `
