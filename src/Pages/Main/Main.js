@@ -3,6 +3,8 @@ import styled, { ThemeProvider, css } from 'styled-components/macro';
 
 import {theme} from 'Styles/Theme';
 
+import Timer from "Components/Timer";
+
 export default function Main() {
 	return (
 		<ThemeProvider theme={theme}>
