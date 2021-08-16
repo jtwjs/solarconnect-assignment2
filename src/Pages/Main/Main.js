@@ -1,16 +1,35 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import styled, { ThemeProvider, css } from 'styled-components/macro';
 
+import InputField from "Components/InputField";
 import {theme} from 'Styles/Theme';
 
 import Timer from "Components/Timer";
 
 export default function Main() {
+	const [inputText, setInputText] = useState('');
+
+	const handleInputWithNumericOnly = useCallback(e => {
+		const value = e.target.value;
+		let regex = /^[0-9\,]*$/;
+		if (!regex.test(value)) {
+			setInputText(value.slice(0, -1));
+		} else {
+			setInputText(value);
+		}
+	}, []);
+
 	return (
 		<ThemeProvider theme={theme}>
 			<StyledMain>
 				<StyledTitle>Sorting Machine</StyledTitle>
 				<StyledSection>
+					<Timer kind="KOREA"/>
+					<InputField
+						inputText={inputText}
+						handleInputText={handleInputWithNumericOnly}
+					/>
+					<Timer kind="USA"/>
 				</StyledSection>
 			</StyledMain>
 		</ThemeProvider>
