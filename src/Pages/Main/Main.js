@@ -1,23 +1,23 @@
 import React, { useState, useCallback } from "react";
 import styled, { ThemeProvider, css } from 'styled-components/macro';
 
-import InputField from "Components/InputField";
 import {theme} from 'Styles/Theme';
-
 import Timer from "Components/Timer";
+import InputField from "Components/InputField";
+import StartButton from "Components/StartButton";
 
 export default function Main() {
 	const [inputText, setInputText] = useState('');
 
 	const handleInputWithNumericOnly = useCallback(e => {
 		const value = e.target.value;
-		let regex = /^[0-9\,]*$/;
-		if (!regex.test(value)) {
-			setInputText(value.slice(0, -1));
-		} else {
-			setInputText(value);
-		}
+		const regex = /^([0-9]+[/,]{0,1})*$/;
+		regex.test(value) && setInputText(value);
 	}, []);
+
+	const handleStartButton = useCallback(() => {
+		console.log('click');
+	},[]);
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -29,6 +29,7 @@ export default function Main() {
 						inputText={inputText}
 						handleInputText={handleInputWithNumericOnly}
 					/>
+					<StyledStartButton clickHandler={handleStartButton} />
 					<Timer kind="USA"/>
 				</StyledSection>
 			</StyledMain>
@@ -42,11 +43,11 @@ const StyledMain = styled.main`
 	background-color: ${({theme}) => theme.color.background};
 	
 	@media screen and ${({theme}) => theme.device.tablet} {
-    padding: 0 ${({theme}) => theme.layout.md_margin}
+    padding: 0 ${({theme}) => theme.layout.md_margin} ${({theme}) => theme.layout.md_margin};
 	}
 
   @media screen and ${({theme}) => theme.device.mobile} {
-    padding: 0 ${({theme}) => theme.layout.sm_margin};
+    padding: 0 ${({theme}) => theme.layout.sm_margin} ${({theme}) => theme.layout.sm_margin};
   }
 `;
 
@@ -86,3 +87,7 @@ const StyledSection = styled.section`
 
   ${responsiveMixin}
 `;
+
+const StyledStartButton = styled(StartButton)`
+	margin-bottom: 50px;
+`
