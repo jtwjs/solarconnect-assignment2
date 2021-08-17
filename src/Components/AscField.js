@@ -3,14 +3,12 @@ import styled from "styled-components/macro";
 
 import Field from "Components/Field";
 
-export default function Ascending() {
+export default function AscField({ nums }) {
   const [ascendingArr, setAscendingArr] = useState([]);
 
   useEffect(() => {
-    setTimeout(() => {
-      selectionSort(mock);
-    }, 3000);
-  }, []);
+    selectionSort(nums);
+  }, [nums]);
 
   const selectionSort = (input) => {
     let arr = [...input];
@@ -29,33 +27,30 @@ export default function Ascending() {
       }
     }
 
-    setAscendingArr(arr);
+    setAscendingArr(arr.join(", "));
   };
 
   return (
     <Field title="Ascending">
-      <Result>
-        {ascendingArr.map((ele, index) => (
-          <span key={index}>{ele}</span>
-        ))}
-      </Result>
+      <Result value={ascendingArr} readOnly></Result>
     </Field>
   );
 }
 
-const Result = styled.div`
-  display: flex;
-  align-items: center;
+const Result = styled.textarea`
   width: 100%;
-  height: 40px;
-  border: 1px solid ${({ theme }) => theme.color.border};
-  border-radius: 4px;
-  padding: 0 16px;
-  background-color: ${({ theme }) => theme.color.white};
+  height: 100%;
+  min-height: 50px;
+  font-size: 25px;
+  font-weight: 700;
+  resize: none;
+  cursor: default;
 
-  span {
-    padding-right: 10px;
+  @media screen and ${({ theme }) => theme.device.tablet} {
+    font-size: 18px;
+  }
+
+  @media screen and ${({ theme }) => theme.device.mobile} {
+    font-size: 14px;
   }
 `;
-
-const mock = [2, 56, 12, 53, 1, 0, 35, 4, 8, 51, 29, 41];
