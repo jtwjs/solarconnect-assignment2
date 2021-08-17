@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import styled from "styled-components/macro";
 
 import Field from "Components/Field";
 
-export default function DescField({ nums }) {
+function DescField({ nums }) {
   const [isShow, setIsShow] = useState(false);
 
   const getDescendingOrder = (nums) => {
@@ -68,6 +68,8 @@ export default function DescField({ nums }) {
     </Field>
   );
 }
+
+export default memo(DescField);
 
 const Container = styled.div`
   width: 100%;

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import styled from "styled-components/macro";
 
 import useInterval from "Utils/Hooks/useInterval";
 
 import Field from "Components/Field";
 
-export default function Timer({ kind }) {
+function Timer({ kind }) {
   const [count, setCount] = useState(0);
 
   useInterval(() => {
@@ -66,6 +66,8 @@ export default function Timer({ kind }) {
     </Field>
   );
 }
+
+export default memo(Timer);
 
 const PrintDate = styled.div`
   display: block;

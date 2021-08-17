@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import styled from "styled-components/macro";
 
 import Field from "Components/Field";
 
-export default function AscField({ nums }) {
+function AscField({ nums }) {
   const [ascendingArr, setAscendingArr] = useState([]);
 
   useEffect(() => {
@@ -36,6 +36,8 @@ export default function AscField({ nums }) {
     </Field>
   );
 }
+
+export default memo(AscField);
 
 const Result = styled.textarea`
   width: 100%;
