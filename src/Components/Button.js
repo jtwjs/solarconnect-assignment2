@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import styled from 'styled-components/macro';
 
-export default function Button({className, clickHandler, children}) {
+const Button = forwardRef(({className, clickHandler, children}, ref) => {
 	return (
 		<Wrapper
+			ref={ref}
 			type="button"
 			className={className}
 			onClick={clickHandler}
@@ -11,7 +12,9 @@ export default function Button({className, clickHandler, children}) {
 			{children}
 		</Wrapper>
 	);
-};
+});
+
+export default Button;
 
 const Wrapper = styled.button`
 	display: inline-flex;

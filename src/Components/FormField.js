@@ -1,26 +1,39 @@
-import React, {forwardRef} from 'react';
+import React, {forwardRef, useCallback} from 'react';
 import styled from 'styled-components/macro';
 
 import Field from "Components/Field";
+import Button from "./Button";
 
-const InputField = forwardRef(({...restProps}, ref) => {
+const FormField = forwardRef(({handleSortingButton, ...restProps}, ref) => {
+
+	const handleEntered = e => {
+		e.keyCode === 13 && setTimeout(() => handleSortingButton(),0);
+	}
 
 	return (
-		<Field title="Sorting Input">
+		<StyledField title="Sorting Form">
 			<Input
 			  ref={ref}
-				{...restProps}
+			  onKeyDown={handleEntered}
+			  {...restProps}
 			/>
-		</Field>
+			<SortingButton clickHandler={handleSortingButton}>Sorting</SortingButton>
+		</StyledField>
 	);
 });
 
-export default InputField;
+export default FormField;
+
+const StyledField = styled(Field)`
+	display: flex;
+	flex-direction: column;
+`
 
 const Input = styled.input`
   display: block;
   width: 100%;
   height: 55px;
+	margin-bottom: 20px;
   border: 1px solid ${({theme}) => theme.color.border};
   border-radius: 4px;
   padding: 0 16px;
@@ -54,3 +67,7 @@ const Input = styled.input`
     }
   }
 `;
+
+const SortingButton = styled(Button)`
+ align-self: center;
+`

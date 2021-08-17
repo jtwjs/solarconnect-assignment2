@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-export default function Field({title, children}) {
+export default function Field({className, title, children}) {
 	return (
-		<Wrapper>
+		<Wrapper className={className}>
 			<StyledTitle>{title}</StyledTitle>
 			{children}
 		</Wrapper>
@@ -30,10 +30,11 @@ const Wrapper = styled.article`
   }
 `;
 
-const StyledTitle = styled.h2`
+const StyledTitle = styled.h3`
 	display: block;
 	margin-bottom: 20px;
 	font-size: 20px;
 	font-weight: 700;
+	color: ${({theme}) => theme.color.blueGreyDark};
 `
 
