@@ -3,8 +3,8 @@ import styled, {ThemeProvider, css} from 'styled-components/macro';
 
 import {theme} from 'Styles/Theme';
 import Timer from "Components/Timer";
-import InputField from "Components/InputField";
-import Button from "Components/Button";
+import FormField from "Components/FormField";
+import DescField from "Components/DescField";
 import Alert from "Components/Alert";
 
 export default function Main() {
@@ -32,7 +32,9 @@ export default function Main() {
 			setIsOpenAlert(true);
 			return;
 		}
-		const nums = inputText.split(',').map(num => parseInt(num));
+		const nums = inputText.split(',')
+			.map(num => parseInt(num))
+			.filter(num => !isNaN(num));
 		setUnsortedNums(nums);
 		setInputText('');
 	}, [inputText]);
@@ -47,15 +49,17 @@ export default function Main() {
 			<StyledMain>
 				<StyledTitle>Sorting Machine</StyledTitle>
 				<StyledSection>
+					<h2 className="a11y">Sorting Machine Container</h2>
 					<Timer kind="KOREA"/>
-					<InputField
+					<FormField
 						ref={inputRef}
 						value={inputText}
+						handleSortingButton={handleSortingButton}
+						handleInputBlur={handleInputBlur}
 						onChange={handleInputWithNumericOnly}
-						onBlur={handleInputBlur}
 						placeholder="ex: 1,2,3,4"
 					/>
-					<SortingButton clickHandler={handleSortingButton}>Sorting</SortingButton>
+					<DescField nums={unsortedNums} />
 					<Timer kind="USA"/>
 				</StyledSection>
 			</StyledMain>
@@ -110,7 +114,6 @@ const StyledSection = styled.section`
   flex-direction: column;
   align-items: center;
   max-width: ${({theme}) => theme.layout.lg_max_container};
-  height: 100vh;
   margin: 0 auto;
   padding: 30px 0;
   border-radius: 20px;
@@ -119,18 +122,3 @@ const StyledSection = styled.section`
   ${responsiveMixin}
 `;
 
-const SortingButton = styled(Button)`
-  margin-bottom: 50px;
-
-  @media screen and ${({theme}) => theme.device.tablet} {
-    &:not(:last-child) {
-      margin-bottom: 40px;
-    }
-  }
-
-  @media screen and ${({theme}) => theme.device.mobile} {
-    &:not(:last-child) {
-      margin-bottom: 30px;
-    }
-  }
-`
