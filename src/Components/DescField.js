@@ -74,7 +74,7 @@ export default memo(DescField);
 
 const Container = styled.div`
   width: 100%;
-  min-height: 50px;
+  min-height: 65px;
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;

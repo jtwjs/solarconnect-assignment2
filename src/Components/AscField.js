@@ -46,7 +46,7 @@ export default memo(AscField);
 const Result = styled.textarea`
   width: 100%;
   height: 100%;
-  min-height: 50px;
+  min-height: 65px;
   font-size: 25px;
   font-weight: 700;
   resize: none;
