@@ -2,6 +2,7 @@ import React, { useState, useEffect, memo } from "react";
 import styled from "styled-components/macro";
 
 import Field from "Components/Field";
+import {quickSort} from "Utils/sort";
 
 function DescField({ nums }) {
   const [isShow, setIsShow] = useState(false);
@@ -10,36 +11,6 @@ function DescField({ nums }) {
     let result = quickSort(nums, 0, nums.length - 1);
 
     return result.join(", ");
-  };
-
-  const quickSort = (arr, l, r) => {
-    if (l < r) {
-      const p = partition(arr, l, r);
-
-      quickSort(arr, l, p - 1);
-      quickSort(arr, p + 1, r);
-    }
-
-    return arr;
-  };
-
-  const partition = (arr, l, r) => {
-    const pivot = arr[r];
-    let i = l - 1;
-
-    for (let j = l; j <= r - 1; j++) {
-      if (arr[j] >= pivot) {
-        i++;
-        const temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-      }
-    }
-    const temp = arr[i + 1];
-    arr[i + 1] = arr[r];
-    arr[r] = temp;
-
-    return i + 1;
   };
 
   useEffect(() => {

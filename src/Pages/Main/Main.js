@@ -7,6 +7,7 @@ import FormField from "Components/FormField";
 import AscendingField from "Components/AscField";
 import DescField from "Components/DescField";
 import Alert from "Components/Alert";
+import validation from "Utils/validation";
 
 export default function Main() {
   const [inputText, setInputText] = useState("");
@@ -17,15 +18,13 @@ export default function Main() {
 
   const handleInputWithNumericOnly = useCallback((e) => {
     const value = e.target.value;
-    const regex = /^([0-9]+[/,]{0,1})*$/;
-    regex.test(value) && setInputText(value);
+    validation.isNumericAndCommaOnly(value) && setInputText(value);
   }, []);
 
   const handleInputBlur = useCallback((e) => {
     const value = e.target.value;
     const lastChar = value.charAt(value.length - 1);
-    const regex = /[0-9]/;
-    !regex.test(lastChar) && setInputText(value.slice(0, -1));
+    validation.isNumericOnly(lastChar) && setInputText(value.slice(0, -1));
   }, []);
 
   const handleSortingButton = useCallback(() => {
@@ -57,7 +56,7 @@ export default function Main() {
             ref={inputRef}
             value={inputText}
             handleSortingButton={handleSortingButton}
-            handleInputBlur={handleInputBlur}
+            onBlur={handleInputBlur}
             onChange={handleInputWithNumericOnly}
             placeholder="ex: 1,2,3,4"
           />

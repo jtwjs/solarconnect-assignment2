@@ -2,33 +2,16 @@ import React, { useEffect, useState, memo } from "react";
 import styled from "styled-components/macro";
 
 import Field from "Components/Field";
+import {selectionSort} from "Utils/sort";
 
 function AscField({ nums }) {
   const [ascendingArr, setAscendingArr] = useState([]);
 
   useEffect(() => {
-    selectionSort(nums);
+    const ascArr = selectionSort(nums);
+
+	  setAscendingArr(ascArr.join(", "));
   }, [nums]);
-
-  const selectionSort = (input) => {
-    let arr = [...input];
-
-    for (let i = 0; i < arr.length - 1; i++) {
-      let minIndex = i;
-
-      for (let j = i + 1; j < arr.length; j++) {
-        if (arr[minIndex] > arr[j]) {
-          minIndex = j;
-        }
-      }
-
-      if (minIndex !== i) {
-        [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
-      }
-    }
-
-    setAscendingArr(arr.join(", "));
-  };
 
   return (
     <Field title="Ascending">
