@@ -72,8 +72,8 @@ export default memo(Timer);
 const PrintDate = styled.div`
   display: block;
   width: 100%;
-  height: 40px;
   padding: 0 16px;
   background-color: ${({ theme }) => theme.color.white};
   font-size: 2rem;
+  text-align: center;
 `;
