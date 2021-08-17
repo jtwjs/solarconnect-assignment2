@@ -32,7 +32,11 @@ function AscField({ nums }) {
 
   return (
     <Field title="Ascending">
-      <Result value={ascendingArr} readOnly></Result>
+      <Result
+	      aria-label="오름차순 결과"
+	      value={ascendingArr}
+	      readOnly
+      ></Result>
     </Field>
   );
 }

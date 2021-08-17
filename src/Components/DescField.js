@@ -58,6 +58,7 @@ function DescField({ nums }) {
       <Container>
         {isShow ? (
           <Content
+	          aria-label="내림차순 결과"
             value={isShow && nums ? getDescendingOrder(nums) : ""}
             readOnly
           ></Content>

@@ -11,7 +11,7 @@ const FormField = forwardRef(({ handleSortingButton, ...restProps }, ref) => {
 
   return (
     <StyledField title="Sorting Form">
-      <Input ref={ref} onKeyDown={handleEntered} {...restProps} />
+      <Input ref={ref} aria-label="정렬할 숫자 입력" onKeyDown={handleEntered} {...restProps} />
       <SortingButton clickHandler={handleSortingButton}>Sorting</SortingButton>
     </StyledField>
   );
