@@ -20,4 +20,8 @@ const StyledTitle = styled.h3`
   font-size: 20px;
   font-weight: 700;
   color: ${({ theme }) => theme.color.blueGreyDark};
+
+  @media screen and ${({ theme }) => theme.device.mobile} {
+    margin-bottom: 10px;
+  }
 `;

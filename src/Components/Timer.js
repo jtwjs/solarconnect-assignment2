@@ -76,4 +76,8 @@ const PrintDate = styled.div`
   background-color: ${({ theme }) => theme.color.white};
   font-size: 2rem;
   text-align: center;
+	
+  @media screen and ${({ theme }) => theme.device.mobile} {
+    font-size: 1.6rem;  
+  }
 `;
