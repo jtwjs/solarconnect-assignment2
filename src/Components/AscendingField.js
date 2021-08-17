@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components/macro";
 
 import Field from "Components/Field";
 
 export default function Ascending() {
+  const [ascendingArr, setAscendingArr] = useState([]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      selectionSort(mock);
+    }, 3000);
+  }, []);
+
   const selectionSort = (input) => {
     let arr = [...input];
 
@@ -21,13 +29,13 @@ export default function Ascending() {
       }
     }
 
-    return arr;
+    setAscendingArr(arr);
   };
 
   return (
     <Field title="Ascending">
       <Result>
-        {selectionSort(mock).map((ele, index) => (
+        {ascendingArr.map((ele, index) => (
           <span key={index}>{ele}</span>
         ))}
       </Result>
