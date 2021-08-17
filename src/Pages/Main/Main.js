@@ -4,6 +4,7 @@ import styled, {ThemeProvider, css} from 'styled-components/macro';
 import {theme} from 'Styles/Theme';
 import Timer from "Components/Timer";
 import FormField from "Components/FormField";
+import AscendingField from "Components/AscendingField";
 import DescField from "Components/DescField";
 import Alert from "Components/Alert";
 
@@ -59,6 +60,7 @@ export default function Main() {
 						onChange={handleInputWithNumericOnly}
 						placeholder="ex: 1,2,3,4"
 					/>
+           <AscendingField />
 					<DescField nums={unsortedNums} />
 					<Timer kind="USA"/>
 				</StyledSection>
@@ -89,25 +91,26 @@ const StyledMain = styled.main`
 const responsiveMixin = css`
   @media screen and ${({theme}) => theme.device.tablet} {
     max-width: ${({theme}) => theme.layout.md_max_container};
-
   }
 
   @media screen and ${({theme}) => theme.device.mobile} {
     max-width: unset;
     width: 100%;
   }
-`
+`;
 
 const StyledTitle = styled.h1`
+
   max-width: ${({theme}) => theme.layout.lg_max_container};
   margin: 0 auto;
   font-size: 30px;
   font-weight: 700;
   line-height: 2;
   color: ${({theme}) => theme.color.blueGrey};
-
+  color: ${({ theme }) => theme.color.blueGrey};
+  
   ${responsiveMixin}
-`
+`;
 
 const StyledSection = styled.section`
   display: flex;
@@ -121,4 +124,3 @@ const StyledSection = styled.section`
 
   ${responsiveMixin}
 `;
-
